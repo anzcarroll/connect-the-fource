@@ -16,9 +16,13 @@
 }
 
 
-h1 {
+h1, #turnAnnouncer {
     font-family: 'Amatic SC', cursive;
     font-size: 60px;
     display: flex;
-    position: center; 
+}
+
+p {
+ display: flex;
+ flex-direction: left;
 }
