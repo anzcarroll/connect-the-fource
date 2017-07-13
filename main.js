@@ -62,7 +62,7 @@ var connectFour = {
          }
     },
 
-    clickLocation: function(column) {
+    clickLocation: $('#columns[{}]').click(function(column) {
         if (board.gameOver !== false) {
             var target = column;
         }
@@ -107,7 +107,11 @@ connectFour.switchPlayers();
     
 
                             //CHECKFORWINNER
-//isVictorious: function(chips, placedX, placedY) {
+//isVictorious: function(player, x, y) {
+        var cell =  //callbackfunction.element[];
+        var x = cell.$('#columns')[7]; 
+        var y =cell.$('#columns')[8];
+
 // checkDirections.
 
 //}
