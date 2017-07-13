@@ -1,19 +1,27 @@
 $(document).ready(function() {
 
-var connectFour {
+var connectFour = {
     //GIVEN the user is on the start page with grid 
         //need array to let any function know what it is searching through
         //
-    var board: [
+    gameOver: false,
+    winner: "nobody",
+    currentPlayer: 'x',
+    board: [
         [0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0]
-        ];
-
+        ]
+}
 // Loop through the array of arrays
+for (var i = 0; i < connectFour.board.length; i++ ) {
+    for ( var j = 0; j < connectFour.board[i].length; j++ ) {
+        console.log(connectFour.board.length);
+    }
+};
 //using the index as positions
 //figure out through the index within the array or arrays where the first chip would drop
 //(loop within  a loops)
@@ -33,20 +41,17 @@ var connectFour {
 
 //  }
      
-    // all canvas element return as array
-    // green: rgb(71, 249, 1);
-    // red:   rgb(149, 40, 34);
    
-function createChips(color, radius, index){
-    var radius = 39;
-    var index = 0;
-    for (index = 0; index <21; index++) {   //make red chips
-       createChips(green,radius, index); //undefined is radius parameter
-    }
-    for (index = 0; index < 42; index++) {  //make black chips
-        createChips(red, radius, index++);
-    }
-}; 
+// function createChips(color, radius, index){
+//     var radius = 39;
+//     var index = 0;
+//     for (index = 0; index <21; index++) {   //make red chips
+//        createChips(green,radius, index); //undefined is radius parameter
+//     }
+//     for (index = 0; index < 42; index++) {  //make black chips
+//         createChips(red, radius, index++);
+//     }
+// }; 
      
 
 
@@ -55,9 +60,9 @@ function createChips(color, radius, index){
 
   
 
-$('query').click(function(){
-    startGame();
-});
+// $('query').click(function(){
+//     startGame();
+// });
 
 
 
@@ -85,9 +90,7 @@ $('query').click(function(){
 // //WHEN the user clicks USER1 
 //     //function needs to start game
     //need array of columns in the game 
-    //ColumnArray=[] = i=0;i<7;i++;
-    //
-
+   
 
 
 // userOneStartsGame: function (event) {
@@ -97,7 +100,10 @@ $('query').click(function(){
 
     
 //     //when userOneStarsGame clicked it needs to call fxn that drops chip
-    
+    //THEN the game starts
+    //chip appears in column that is clicked
+        //create chip
+        //create function
 // }
 // countChipsInColumn: function(colorArray, row, col) {
 //     //take array of Chips in play for color/user x
@@ -105,20 +111,20 @@ $('query').click(function(){
 //     //
 // }
 
-//THEN the game starts
-    //chip appears in column that is clicked
-        //create chip
-        //create function
 
 
 
 //RESET
-// $('#resetGame').click(function() {
-      this.gameOver = false;
-      this.winner = "nobody";
-      this.currentPlayer = "x";
-      for (var i = 0; i < this.board.length; i++ ) {
-        for ( var j = 0; j < this.board[i].length; j++ ) {
-           $('#resetGame').set(this.board[i],[j],'');
-//}
-//  });
+// method: {
+// GameReset: function(array) {
+//     this.gameOver = false;
+//     this.winner = "nobody";
+//     this.currentPlayer = "x";
+//     for (var i = 0; i < this.board.length; i++ ) {
+//     for ( var j = 0; j < this.board[i].length; j++ ) {
+//         $('#resetGame').set.click(this.board[i],[j], 0);
+//             }
+//         }
+//     }
+// };
+});
