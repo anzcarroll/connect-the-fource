@@ -55,22 +55,23 @@ var connectFour = {
       if (connectFour.board[i][j]=== 0) {
             connectFour.board[i][j] = connectFour.currentPlayer;
         //need to finish fxn--->connectFour.changeColor(); 
-        //need to finish fxn--->connectFour.isVictorious();
+       connectFour.isVictorious();
         return (cell);
                  }
              }
          }
     },
 
-    clickLocation: $('#columns[{}]').click(function(column) {
+  $('#columns[{}]').click(function(column) {
+     $('#columns[{}]').click
         if (board.gameOver !== false) {
             var target = column;
         }
          board.dropCoin(target);
          board.switchPlayers();
-            },
+            
         
- 
+  });
 //                            //SWITCH PLAYERS
 // //if player === a then a //if player !== a then b
     switchPlayers: function() {
@@ -85,10 +86,8 @@ var connectFour = {
                 console.log(1);
         //need to callfunctionhere(this.currentPlayer);
             }
-    }
-connectFour.dropChip();
-connectFour.switchPlayers();
-});  
+    },
+
 // // colorChanger: function (){
 
 // // }
@@ -108,26 +107,52 @@ connectFour.switchPlayers();
 
                             //CHECKFORWINNER
 //isVictorious: function(player, x, y) {
-        var cell =  //callbackfunction.element[];
-        var x = cell.$('#columns')[7]; 
-        var y =cell.$('#columns')[8];
-
-// checkDirections.
-
-//}
+//        var cell =  //callbackfunction.element[];
+//        var x = cell.$('#columns')[7]; 
+//        var y =cell.$('#columns')[8];
 
 
+isVictory: function (pieces, placedX, placedY) {
+  var i, j, x, y, maxX, maxY, steps, count = 0,
+    var directions = [
+      { x: 0, y: 1  }, // North-South
+      { x: 1, y: 0  }, // East-West
+      { x: 1, y: 1  }, // Northeast-Southwest
+      { x: 1, y: -1 }  // Southeast-Northwest
+    ],
 
-//RESET
-// method: {
-// GameReset: function(array) {
-//     this.gameOver = false;
-//     this.currentPlayer = "a";
-//     for (var i = 0; i < this.board.length; i++ ) {
-//     for ( var j = 0; j < this.board[i].length; j++ ) {
-//         $('#resetGame').click(this.board[i],[j], 0);
-//             }
-//         }
-//     }
-// };
-// });
+  // Check all directions
+  var outerloop =
+  for (i = 0; i < directions.length; i++, count = 0) {
+    // Set up bounds to go 3 pieces forward and backward
+    x =     Math.min(Math.max(placedX - (3 * directions[i].x), 0), pieces.length    - 1);
+    y =     Math.min(Math.max(placedY - (3 * directions[i].y), 0), pieces[0].length - 1);
+    maxX =  Math.max(Math.min(placedX + (3 * directions[i].x),     pieces.length    - 1), 0);
+    maxY =  Math.max(Math.min(placedY + (3 * directions[i].y),     pieces[0].length - 1), 0);
+    steps = Math.max(Math.abs(maxX - x), Math.abs(maxY - y));
+
+    for (j = 0; j < steps; j++, x += directions[i].x, y += directions[i].y) {
+      if (pieces[x][y] == pieces[placedX][placedY]) {
+        // Increase count
+        if (++count >= 4) {
+          break outerloop;
+        }
+      } else {
+        // Reset count
+        count = 0;
+      }
+    }
+  }
+
+  return count >= 4;
+}
+
+connectFour.dropChip();
+connectFour.switchPlayers();
+});  
+
+
+
+
+
+
