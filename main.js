@@ -1,11 +1,9 @@
-$(document).ready(function() {
+$(function() {
 
 var connectFour = {
-    //GIVEN the user is on the start page with grid 
-        //need array to let any function know what it is searching through
-        //
+    //need array to let any function know what it is searching through
     gameOver: false,
-    //designate if luke=player "a" or if darth=player "b"
+    //designate if luke=player 1 or if darth=player 2
     currentPlayer: 1,
     board: [
         [{},{},{},{},{},{},{}],
@@ -33,66 +31,92 @@ var connectFour = {
  
  //       }
     // },
-//     directions: [
-//         { x: 0, y: 1  }, // North-South
-//         { x: 1, y: 0  }, // East-West
-//         { x: 1, y: 1  }, // Northeast-Southwest
-//         { x: 1, y: -1 }  // Southeast-Northwest
-//         ]
-
 // };
 
-// //
-    dropChip: function() {
-
-//// Loop through the array of arrays
-        for (var i = 0; i < connectFour.board.length; i++ ) {
-        for ( var j = 0; j < connectFour.board[i].length; j++ ) {
-            let cell = $(`#columns ${i}${j}`);
-            console.log(connectFour.board.length);
+dropChip: function(column) {
+    //// Loop through the array of arrays
+        // for (var i = 0; i < connectFour.board.length; i++ ) {
+        // for ( var j = 0; j < connectFour.board[i].length; j++ ) {
+        //     let cell = $(`#columns ${i}${j}`);
+        //     console.log(connectFour.board.length);
         //return the ids for each column in loop as string locations
 //// if the loops are set to index0 then start turn
-      if (connectFour.board[i][j]=== 0) {
-            connectFour.board[i][j] = connectFour.currentPlayer;
+        // if (connectFour.board[i][j]=== 0) {
+        //     connectFour.board[i][j] = connectFour.currentPlayer;
         //need to finish fxn--->connectFour.changeColor(); 
-       connectFour.isVictorious();
-        return (cell);
-                 }
-             }
-         }
+         //   connectFour.isVictorious();
+       // return (cell);
+                //  }
+            //  }
+       
+
     },
 
-  $('#columns[{}]').click(function(column) {
-     $('#columns[{}]').click
-        if (board.gameOver !== false) {
-            var target = column;
-        }
-         board.dropCoin(target);
-         board.switchPlayers();
-            
-        
-  });
-//                            //SWITCH PLAYERS
-// //if player === a then a //if player !== a then b
-    switchPlayers: function() {
-        if (this.currentPlayer === 1) {
-            this.currentPlayer = 2;
-                //$('#').click.css('background-color', red);
-                console.log(2);
+    //console.log(dropChip());
+
+switchPlayers: function(currentPlayer) {
+        if (this.current === 1) {
+           currentPlayer = this.currentPlayer = 2;
+                $('#turn').html("Darth Vader");
+                console.log(currentPlayer)
         } else {
-            this.currentPlayer = 1;
-                //$('#').css('background-color', green);
+          currentPlayer = this.currentPlayer = 1;
+                $('#turn').html("Luke Skywalker");
                 }
-                console.log(1);
-        //need to callfunctionhere(this.currentPlayer);
-            }
+                console.log(currentPlayer);
+        this.dropChip(currentPlayer);
     },
+    
+
+   whenClicked: function() {
+       for (var i = 0; i < 6; i++) {
+            for (var j = 0; j < 7; j++) {
+         $(`#columns-${i}${j}`).on('click', dropCoin());
+            if (board.gameOver !== false) {
+            var target = column;
+            }
+         connectFour.dropCoin(column);
+         connectFour.switchPlayers(currentPlayer);
+            }     
+     }
+
+}
+
+// //   });            
+//     for (var i = 0; i < 6; i++) {
+//             for (var j = 0; j < 7; j++) {
+//             let cell = $(`#columns-${i}${j}`);
+//             let target = column;
+//      cell.on('click', connectFour.dropChip(column));
+//      cell.on('click', connectFour.switchPlayers(currentPayer));
+//             }
+//     }
+ } //<---bracket ends connectFour object
+
+
+
+
+
+
+ 
+// PUT EVERYTHING HERE! OR TRY.
+ function clickClick(){
+    alert('Im working');
+}
+
+console.log(connectFour);
+
+$('#columns-00').on('click', function(){
+    clickClick();
+}) 
+ }); //<-- this ends jquery document load function
+
 
 // // colorChanger: function (){
 
-// // }
      
-   
+
+
 
 
 
@@ -112,47 +136,33 @@ var connectFour = {
 //        var y =cell.$('#columns')[8];
 
 
-isVictory: function (pieces, placedX, placedY) {
-  var i, j, x, y, maxX, maxY, steps, count = 0,
-    var directions = [
-      { x: 0, y: 1  }, // North-South
-      { x: 1, y: 0  }, // East-West
-      { x: 1, y: 1  }, // Northeast-Southwest
-      { x: 1, y: -1 }  // Southeast-Northwest
-    ],
+// function isVictorious(player, cell) {
+//     var directions = [
+//       { x: 0, y: 1  }, // North-South
+//       { x: 1, y: 0  }, // East-West
+//       { x: 1, y: 1  }, // Northeast-Southwest
+//       { x: 1, y: -1 }  // Southeast-Northwest
+//     ],
+// // Check all directions
 
-  // Check all directions
-  var outerloop =
-  for (i = 0; i < directions.length; i++, count = 0) {
-    // Set up bounds to go 3 pieces forward and backward
-    x =     Math.min(Math.max(placedX - (3 * directions[i].x), 0), pieces.length    - 1);
-    y =     Math.min(Math.max(placedY - (3 * directions[i].y), 0), pieces[0].length - 1);
-    maxX =  Math.max(Math.min(placedX + (3 * directions[i].x),     pieces.length    - 1), 0);
-    maxY =  Math.max(Math.min(placedY + (3 * directions[i].y),     pieces[0].length - 1), 0);
-    steps = Math.max(Math.abs(maxX - x), Math.abs(maxY - y));
+// }
 
-    for (j = 0; j < steps; j++, x += directions[i].x, y += directions[i].y) {
-      if (pieces[x][y] == pieces[placedX][placedY]) {
-        // Increase count
-        if (++count >= 4) {
-          break outerloop;
-        }
-      } else {
-        // Reset count
-        count = 0;
-      }
-    }
-  }
-
-  return count >= 4;
-}
-
-connectFour.dropChip();
-connectFour.switchPlayers();
-});  
+// connectFour.dropChip();
+// connectFour.switchPlayers();
+// });  
 
 
-
-
+// reset 
+//  gameOver: false,
+//     //designate if luke=player 1 or if darth=player 2
+//     currentPlayer: 1,
+//     board: [
+//         [{},{},{},{},{},{},{}],
+//         [{},{},{},{},{},{},{}],
+//         [{},{},{},{},{},{},{}],
+//         [{},{},{},{},{},{},{}],
+//         [{},{},{},{},{},{},{}],
+//         [{},{},{},{},{},{},{}]
+//         ],
 
 
