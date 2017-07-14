@@ -20,11 +20,14 @@ dropChip: function(column) {
     //give var to all of the columns
     var columnToDrop = $('.col-md-6');
     //give var to the array of the columns now declared in new var
-    //var whereStartDrop = this.board[];
+    whereStartDrop = this.board;
     //need to loop thru 
      console.log("dropChip, im working");
-     for (var i = 0; i >= connectFour.board.length - 1; i--) {
+     console.log(connectFour.board.length[0]);
+     for (var i = 0; i <= connectFour.board.length; i++) {
+         console.log(whereStartDrop[i]);
         if (whereStartDrop[i] === 0) {
+            console.log(whereStartDrop[i]);
             whereStartDrop[i] = connectFour.currentPlayer;
         //need to call fxn for color change
           changeColors();
@@ -71,19 +74,25 @@ function changeColors(){
         }
     }      
 }
-
-// function whenClicked() {
-//      if (connectFour.gameOver !== false) {
-//          console.log("whenclickedlogging");
-//                 // var getTarget = column;
-//                 connectFour.dropChip();
-//                 connectFour.switchPlayers();
-//             }
-// }  
+$('.col-md-6').click(function() {
+//  function whenClicked() {
+    console.log("whenclickedlogging");
+    // var getTarget = column;
+    console.log("Call dropChip function");
+    connectFour.dropChip();
+    console.log("Call switchPlayers function");
+    connectFour.switchPlayers();
+    //  if (connectFour.gameOver !== false) {
+    //             // var getTarget = column;
+    //             console.log("Call dropChip function");
+    //             // connectFour.dropChip();
+    //             console.log("Call switchPlayers function");
+    //             // connectFour.switchPlayers();
+    //         }
+    })
 //whenClicked();
 changeColors();
-//        for (var i = 0; i < 6; i++) {
-//             for (var j = 0; j < 7; j++) {
+//         {
 //          $(`#columns-${i}${j}`).on('click', dropCoin());
 //             if (board.gameOver !== false) {
 //             var target = column;
@@ -93,23 +102,29 @@ changeColors();
 // }
  
 // PUT EVERYTHING ^^^^HERE^^^^! OR TRY.
-function clickClick(){
+
+//created function that changes "columns-__" to a number
+//need to split the number for x & y coordinates
+//use function to decalred wins at x,y coordinates
+function parseIntColumnIds(x, y){
     console.log("CLICKCLICKimworking");
-     for (var i = 0; i < connectFour.board.length; i++ ) {
-      for ( var j = 0; j < connectFour.board[i].length; j++ ){
-           let cell = $(`#columns ${i}${j}`);
-           return(cell);
+            for (var i = 0; i < 6; i++) {
+            for (var j = 0; j < 7; j++){
+           let cell = $(`#columns-${i}${j}`);
+           let cellId = parseInt((cell.attr('id').replace(/columns-/, '')));
+           console.log(cell);
+           let x = parseInt(cellId);
+           let y = parseInt(cellId);
+           console.log(x + " im x ");
             }
         }    
-    }
+}
 
 
-clickClick();
+parseIntColumnIds();
  
  }); //<-- this ends jquery document load function
 
-
-// // colorChanger: function (){
 
      
 
@@ -142,11 +157,6 @@ clickClick();
 //     ],
 // // Check all directions
 
-// }
-
-// connectFour.dropChip();
-// connectFour.switchPlayers();
-// });  
 
 
 // reset 
