@@ -5,6 +5,7 @@ var connectFour = {
     gameOver: false,
     //designate if luke=player 1 or if darth=player 2
     currentPlayer: 1,
+    //array for each square in the gameboard
     board: [
         [{},{},{},{},{},{},{}],
         [{},{},{},{},{},{},{}],
@@ -13,102 +14,98 @@ var connectFour = {
         [{},{},{},{},{},{},{}],
         [{},{},{},{},{},{},{}]
         ],
-        // trying to create a function within object for the loop
-             // of board arrays to use within other funtions that would need the data
-   //loopForBoard: function(i, j) {
-   //     for (var i = 0; i < connectFour.board.length; i++ ) {
-   //     for ( var j = 0; j < connectFour.board[i].length; j++ ){
-   //         console.log([i, j]);
-   //             }  
-    //        }
-//loopForBoard.map();
-//        }
-//    }
-//});
-
-
-            // }
- 
- //       }
-    // },
-// };
+    
 
 dropChip: function(column) {
-    //// Loop through the array of arrays
-        // for (var i = 0; i < connectFour.board.length; i++ ) {
-        // for ( var j = 0; j < connectFour.board[i].length; j++ ) {
-        //     let cell = $(`#columns ${i}${j}`);
-        //     console.log(connectFour.board.length);
-        //return the ids for each column in loop as string locations
-//// if the loops are set to index0 then start turn
-        // if (connectFour.board[i][j]=== 0) {
-        //     connectFour.board[i][j] = connectFour.currentPlayer;
-        //need to finish fxn--->connectFour.changeColor(); 
-         //   connectFour.isVictorious();
-       // return (cell);
-                //  }
-            //  }
-       
+    //give var to all of the columns
+    var columnToDrop = $('.col-md-6');
+    //give var to the array of the columns now declared in new var
+    //var whereStartDrop = this.board[];
+    //need to loop thru 
+     console.log("dropChip, im working");
+     for (var i = 0; i >= connectFour.board.length - 1; i--) {
+        if (whereStartDrop[i] === 0) {
+            whereStartDrop[i] = connectFour.currentPlayer;
+        //need to call fxn for color change
+          changeColors();
+          //need to call function for victory
+           // return; all of above 
+        }
+    }   
+ },
 
-    },
-
-    //console.log(dropChip());
 
 switchPlayers: function(currentPlayer) {
-        if (this.current === 1) {
+         console.log("switchPlayersisworking");
+        if (this.currentPlayer === 1) {
            currentPlayer = this.currentPlayer = 2;
                 $('#turn').html("Darth Vader");
-                console.log(currentPlayer)
         } else {
           currentPlayer = this.currentPlayer = 1;
                 $('#turn').html("Luke Skywalker");
                 }
-                console.log(currentPlayer);
-        this.dropChip(currentPlayer);
+        return;
     },
-    
-
-   whenClicked: function() {
-       for (var i = 0; i < 6; i++) {
-            for (var j = 0; j < 7; j++) {
-         $(`#columns-${i}${j}`).on('click', dropCoin());
-            if (board.gameOver !== false) {
-            var target = column;
-            }
-         connectFour.dropCoin(column);
-         connectFour.switchPlayers(currentPlayer);
-            }     
-     }
-
-}
-
-// //   });            
-//     for (var i = 0; i < 6; i++) {
-//             for (var j = 0; j < 7; j++) {
-//             let cell = $(`#columns-${i}${j}`);
+// //            
+//     
 //             let target = column;
 //      cell.on('click', connectFour.dropChip(column));
 //      cell.on('click', connectFour.switchPlayers(currentPayer));
 //             }
 //     }
  } //<---bracket ends connectFour object
+connectFour.dropChip();
+connectFour.switchPlayers();
 
 
-
-
-
-
- 
-// PUT EVERYTHING HERE! OR TRY.
- function clickClick(){
-    alert('Im working');
+function changeColors(){
+    console.log("changecolorslogging")
+    let cell = $(`#columns-${i}${j}`);
+    for (var i = 0; i < 6; i++) {
+    for (var j = 0; j < 7; j++) {
+         if (connectFour.switchPlayers() === 1) {
+        cell.css("background-color", "green")
+         } else {
+        cell.css("background-color", "red")
+            }
+        }
+    }      
 }
 
-console.log(connectFour);
+// function whenClicked() {
+//      if (connectFour.gameOver !== false) {
+//          console.log("whenclickedlogging");
+//                 // var getTarget = column;
+//                 connectFour.dropChip();
+//                 connectFour.switchPlayers();
+//             }
+// }  
+//whenClicked();
+changeColors();
+//        for (var i = 0; i < 6; i++) {
+//             for (var j = 0; j < 7; j++) {
+//          $(`#columns-${i}${j}`).on('click', dropCoin());
+//             if (board.gameOver !== false) {
+//             var target = column;
+//             }
+          
+//      }
+// }
+ 
+// PUT EVERYTHING ^^^^HERE^^^^! OR TRY.
+function clickClick(){
+    console.log("CLICKCLICKimworking");
+     for (var i = 0; i < connectFour.board.length; i++ ) {
+      for ( var j = 0; j < connectFour.board[i].length; j++ ){
+           let cell = $(`#columns ${i}${j}`);
+           return(cell);
+            }
+        }    
+    }
 
-$('#columns-00').on('click', function(){
-    clickClick();
-}) 
+
+clickClick();
+ 
  }); //<-- this ends jquery document load function
 
 
