@@ -4,7 +4,7 @@
 }
 
 .eachRow {
-   background-color: gray;
+   /*background-color: gray;*/
    display: flex;
 }
 
@@ -25,4 +25,16 @@ h1, #turnAnnouncer {
 p {
  display: flex;
  flex-direction: left;
+}
+
+.red {
+  background-color: red !important;
+}
+
+.green {
+  background-color: green !important;
+}
+
+.grey {
+  background-color: grey;
 }
