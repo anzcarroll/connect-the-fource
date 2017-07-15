@@ -2,6 +2,7 @@
 
 ##description of game here
 
+
 ###Related Links
 *bitballoon link here
 *trello link here
@@ -16,4 +17,6 @@
 
 
 ###Future Development
-
+*add sound effects to player buttons
+*add light saber as chips
+*pop up image to alert winner 
