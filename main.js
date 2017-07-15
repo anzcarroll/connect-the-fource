@@ -30,7 +30,7 @@ dropChip: function(column) {
             console.log(whereStartDrop[i]);
             whereStartDrop[i] = connectFour.currentPlayer;
         //need to call fxn for color change
-          changeColors();
+          //changeColors();
           //need to call function for victory
            // return; all of above 
         }
@@ -60,21 +60,8 @@ switchPlayers: function(currentPlayer) {
 connectFour.dropChip();
 connectFour.switchPlayers();
 
-
-function changeColors(){
-    console.log("changecolorslogging")
-    let cell = $(`#columns-${i}${j}`);
-    for (var i = 0; i < 6; i++) {
-    for (var j = 0; j < 7; j++) {
-         if (connectFour.switchPlayers() === 1) {
-        cell.css("background-color", "green")
-         } else {
-        cell.css("background-color", "red")
-            }
-        }
-    }      
-}
 $('.col-md-6').click(function() {
+    console.log(this);
 //  function whenClicked() {
     console.log("whenclickedlogging");
     // var getTarget = column;
@@ -82,6 +69,30 @@ $('.col-md-6').click(function() {
     connectFour.dropChip();
     console.log("Call switchPlayers function");
     connectFour.switchPlayers();
+    let clickedColumn = this;
+})
+
+
+//when its the players turn and they click on cell #, then the color changes 
+function changeColors(){
+    console.log(" Change color logging")
+    //when player clicks on and of the parseIntColumnIds;
+         //it changes to their color
+         //listen for click.colmd6 find id of clicked then chnge color based off id NOT class
+    let cell = $('.col-md-6').click();
+    console.log("-------------")
+    console.log(cell);
+    console.log("-------------")
+         if (connectFour.switchPlayers() === 1) {
+        cell.css("background-color", "green")
+        console.log("im changing to luke");
+         } else {
+        cell.css("background-color", "red")
+           // }
+       // }
+    }      
+}
+
     //  if (connectFour.gameOver !== false) {
     //             // var getTarget = column;
     //             console.log("Call dropChip function");
@@ -89,7 +100,6 @@ $('.col-md-6').click(function() {
     //             console.log("Call switchPlayers function");
     //             // connectFour.switchPlayers();
     //         }
-    })
 //whenClicked();
 changeColors();
 //         {
@@ -106,8 +116,8 @@ changeColors();
 //created function that changes "columns-__" to a number
 //need to split the number for x & y coordinates
 //use function to decalred wins at x,y coordinates
-function parseIntColumnIds(x, y){
-    console.log("CLICKCLICKimworking");
+var parseIntColumnIds = function(x, y){
+    console.log("i have changed your strings to numbers");
             for (var i = 0; i < 6; i++) {
             for (var j = 0; j < 7; j++){
            let cell = $(`#columns-${i}${j}`);
@@ -121,7 +131,7 @@ function parseIntColumnIds(x, y){
 }
 
 
-parseIntColumnIds();
+// parseIntColumnIds();
  
  }); //<-- this ends jquery document load function
 
