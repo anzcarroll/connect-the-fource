@@ -17,8 +17,17 @@ $(function() {
         dropChip: function(column) {
             //give var to all of the columns
             var columnToDrop = $('.col-md-6')[$('.col-md-6').length - 6];
+            var whereStartDrop = false;
+            //if the colum attepmting click has p1 || p2
+            if ($(columnToDrop).hasClass('p1') || $(columnToDrop).hasClass('p2')) {
+                var whereStartDrop = column.target;
+                 //then the column is not available for palyer move
+                whereStartDrop === true;
+            } else {
+                //else the column is available for player move
+                 whereStartDrop === false;   
+            }
             //give var to the array of the columns now declared in new var
-            whereStartDrop = this.board[0];
         },
 
         switchPlayers: function(currentPlayer) {
@@ -33,37 +42,33 @@ $(function() {
             return;
         }
     }; //<---bracket ends connectFour object
-
-    // connectFour.switchPlayers();
-
-    $('.col-md-6').on('click', function(col) {
-        // dont allow user to click any row < 4 on first try
-        currentClickedRow = parseInt(col.target.id.split('-')[1]);
-
-
-        if (currentClickedRow >= 50) { // NOTE: Change this later!!!!!!!
-            connectFour.switchPlayers();
-            connectFour.dropChip(col.target);
-            
-            // if (!$(col.target).hasClass('red') || !$(col.target).hasClass('green')) {
-                if (connectFour.currentPlayer == 1) {
-                    if (!$(col.target).hasClass('p2'))
-                    {
-                        changeColors(connectFour.currentPlayer, $(this));
-                    }
-
-                } else {
-                    if (!$(col.target).hasClass('p1')) {
-                        changeColors(connectFour.currentPlayer, $(this));
-                    }
-                }
-            // }
-
-            
+    
+    // @TODO: There is a bug that changes the user state when click is too fast
+    $('.col-md-6').on('click', function(cell) {
+        
+        currentClickedCell = parseInt(cell.target.id.split('-')[1]);
+        nextCellId = currentClickedCell+10;
+        cellBelow = $('#columns-' + nextCellId)[0];
+        if (cellBelow !== undefined) {
+            // console.log($(cellBelow)[0])
+            // console.log($(cellBelow).hasClass('p1') || $(cellBelow).hasClass('p2'));
         }
-        // }
+        // dont allow user to click any row < 4 on first try
+        if (currentClickedCell >= 50 || $(cellBelow).hasClass('p1') || $(cellBelow).hasClass('p2')) {
+            connectFour.switchPlayers();
+            connectFour.dropChip(cell.target);
+            
+            if (connectFour.currentPlayer == 1) {
+                if (!$(cell.target).hasClass('p2')) {
+                    changeColors(connectFour.currentPlayer, $(this));
+                }
 
-        // if cell has either green or red prevent click
+            } else {
+                if (!$(cell.target).hasClass('p1')) {
+                    changeColors(connectFour.currentPlayer, $(this));
+                }
+            }
+        }
     });
 
     //when its the players turn and they click on cell #, then the color changes
