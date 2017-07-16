@@ -15,16 +15,10 @@
     border: 1px solid black
 }
 
-
 h1, #turnAnnouncer {
     font-family: 'Amatic SC', cursive;
     font-size: 60px;
     display: flex;
-}
-
-p {
- display: flex;
- flex-direction: left;
 }
 
 .red {
@@ -37,4 +31,24 @@ p {
 
 .grey {
   background-color: grey;
+}
+.leftHalf { 
+  width: 20%; 
+  float: left;
+}
+
+.rightHalf { 
+  width: 80%; float: left; 
+}
+
+#howToBullets {
+  font-family: 'Open Sans', sans-serif;
+}
+.nameGame {
+ display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: stretch;
 }

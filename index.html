@@ -12,11 +12,13 @@
 
 <!-- Optional theme -->
 <link 
-    rel="stylesheet"          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
 <!-- Google Font Stylesheet -->
 <link 
     href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+
+    <!--<link->href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">-->
 
 <!-- MY CSS FILE LINK -->
 <link  
@@ -27,22 +29,34 @@
 <body>
     <div class="row container"></div>
 <header>
-    <h1>Connect the Force</h1>
-    <h2><button 
-        type="button" class="btn" id="resetGame">RESET</button></h2>
-    <div>
-        <p id="turnAnnouncer">Your Turn:</p><span id="turn">    </span>
+      <div class="nameGame">
+        <h1>Connect the Force</h1>
+    </div>
+    <div class="gameInstructions">
+    <p> 
+            <h2 class="gameInstructions"> How To Play:</h2>
+            <ul>
+                <li>Decide whether you want to be on the Dark Side; if so, you are player 2</li>
+                <li>Player 1 will make the first move by clicking in the desired square</li>
+                <li>once a player gets four pieces in a row, gam ewill be over</li>
+                <li>hit reset to refresh the board and play again</li>   
+            </ul>
+            <h2><button type="button" class="btn-lg" id="resetGame">
+                RESET</button></h2>
+        </p>
+    </div>
+</header>
+
+<!--<div class="container">
+    </div>-->
+       
+    <div id="turnAnnouncer">
+        <p>Your Turn:</p><span id="turn"></span>
     </div> 
 
-</header>
-    </div>
-
-<div class="container">
-
-    <div class="instructionBox">
-        <p>lomo bitters narwhal PBR&B polaroid pour-over post-ironic banh mi paleo Pitchfork retro aesthetic bespoke Blue Bottle seitan trust fund tofu kogi occupy master cleanse raw denim gentrify 90's ennui locavore cliche jean shorts mlkshk literally crucifix High Life Pinterest authentic sartorial fanny pack gastropub small batch four loko slow-carb vinyl selvage 3 wolf moon drinking vinegar irony Portland iPhone chambray sustainable before they sold out Etsy flannel Vice wayfarers hella wolf Brooklyn butcher food truck chia fixie keytar street art kale chips leggings blog skateboard Echo Park dreamcatcher American Apparel church-key roof party ugh banjo readymade flexitarian fap hoodie Williamsburg Bushwick stumptown whatever tote bag yr you probably haven't heard of them fashion axe try-hard umami shabby chic Thundercats cred Tonx XOXO tattooed</p>
-    </div>
+  
 <!--BEGINING OF GRID-->
+<div class="gameBoardGrid">
     <div class="eachRow">
         <div id="columns-00" class="col-md-6 grey"></div>
         <div id="columns-01" class="col-md-6 grey"></div>
@@ -106,24 +120,19 @@
 </div> 
 
 <!--END OF GRID-->
-<div class="players">
+<!--<div class="players">
     <h2><button 
         type="button" class="btn btn-warning btn-lg" id="luke">Luke Skywalker</button></h2>
     <h2><button 
         type="button" class="btn btn-warning btn-lg" id="darth">Darth Vader </button></h2>    
     </div>
-
+-->
 
 
  
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script 
     src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<!-- jQuery UI cdn-->
-<script
-     src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
-    integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
-    crossorigin="anonymous"></script>
 
 
 <!-- Latest compiled and minified JavaScript --> 
