@@ -43,16 +43,16 @@ h1 {
 }
 
 .red {
-  background-color: red !important;
+  background-color: red;
 }
 
 .green {
-  background-color: green !important;
+  background-color: green;
 }
 
 #howTo {
   font-family: 'Inconsolata', monospace;
-  font-size: 28px;
+  font-size: 28px10em;
 }
 
 .nameGame {
