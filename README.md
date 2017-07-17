@@ -12,7 +12,7 @@ https://gomockingbird.com/projects/b3t6x80/4gXVnC
 
 https://trello.com/b/oYyOdniq/project1
 
-publisher-effects-50536.bitballoon.com
+http://publisher-effects-50536.bitballoon.com/
 
 
 ###list of libraries used 
