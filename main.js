@@ -39,7 +39,7 @@ $(function() {
                     $('#turn').html('Darth Vader');
                     $('#turn').css('color', 'red')
                 }
-                return;
+                isVictory();
         }
     }; //<---bracket ends connectFour object
 
@@ -82,44 +82,41 @@ $(function() {
         }
     }
     //check win
- function isVictory() {
-        var i;
-        var j;
-        var k;
-        var rTemp = 0;
-        var bTemp = 0;
-        var brTemp = 0;
-        var trTemp = 0;
-        for (i = 0; i < 6; i++) {
-            for (j = 0; j < 7; j++) {
-            for (k = 0; k <= 3; k++) {
+ function isVictory(currentPlayer) {     
+    var horiz = 0;
+    var vert = 0;
+    var diagA = 0;
+    var diagB = 0;
+        for (var i = 0; i < 6; i++) {
+            for (var j = 0; j < 7; j++) {
+            for (var k = 0; k <= 3; k++) {
                     //from (i,j) to right
                     if (j + k < 7) {
-                        rTemp += connectFour.board[i][j + k]
+                        horiz += Math.abs(connectFour.board[i][j + k]);
                     }
                     //from (i,j) to bottom
                     if (i + k < 6) {
-                        bTemp += connectFour.board[i + k][j];
+                        vert += Math.abs(connectFour.board[i + k][j]);
                     }
 
                     //from (i,j) to bottom-right
                     if (i + k < 6 && j + k < 7) {
-                        brTemp += connectFour.board[i + k][j + k]
+                        diagA += Math.abs(connectFour.board[i + k][j + k]);  
                     }
 
                     //from (i,j) to top-right
                     if (i - k >= 0 && j + k < 7) {
-                        trTemp += connectFour.board[i - k][j + k];
+                        diagB += Math.abs(connectFour.board[i - k][j + k]);
                     }
-                }
-                if (Math.abs(rTemp) === 4) {
-                    alertWinner(currentPlayer);
-                } else if (Math.abs(bTemp) === 4) {
-                    alertWinner(currentPlayer);
-                } else if (Math.abs(brTemp) === 4) {
-                    alertWinner(currentPlayer);
-                } else if (Math.abs(trTemp) === 4) {
-                    alertWinner(currentPlayer);
+                 console.log('is this working');
+                if (horiz === 4) {
+                    return (alertWinner(currentPlayer));
+                } else if (vert === 4) {
+                    return (alertWinner(currentPlayer));
+                } else if (diagA === 4) {
+                    return (alertWinner(currentPlayer));
+                } else if (diagB === 4) {
+                    return (alertWinner(currentPlayer));
                 }
             }
     }
@@ -175,5 +172,6 @@ $(function() {
     //use function to decalred wins at x,y coordinates
 
 
-}
+        }
+    }
 });
