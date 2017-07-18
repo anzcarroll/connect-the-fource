@@ -120,8 +120,6 @@ $(function() {
                 }
             }
     }
-  
-
 
      alertWinner = function(currentPlayer) {
          connectFour.gameOver = true;
@@ -132,6 +130,13 @@ $(function() {
          }
      }
     
+    //MAKE AUDIO ON CLICK
+    //create fxn that calls in current clicked cell 
+   // function chipSound(){
+            
+
+
+    //})
     
     // parseIntColumnIds = function(currentClickedCell) {
     //    for (var i = 0; i < 6; i++) {
